@@ -185,6 +185,7 @@
     body {
       width: 100%;
       margin: auto;
+      overflow: hidden;
     }
 
     body,button,input,select,textarea {
@@ -204,7 +205,9 @@
 
     .secret {
       position: fixed;
+      font-size: 48px;
       font-size: 10rem;
+      font-size: 10vh;
       top: 0;
       opacity: 0.3;
       z-index: 1;
@@ -233,9 +236,29 @@
       50% { background: #55dd55; }
       to { background: #f44336; }
     }
-    @-webkit-keyframes love {
-      from { transform: translate(0) scale(0.8); opacity: 0.0; }
-      to { transform: translate(0) scale(1); opacity: 0.5; }
+    #pics {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      bottom: -20px;
+      right: 20%;
+      animation: pic 5s ease-out forwards;
+    }
+    #pics img {
+      width: 100%;
+      height: auto;
+      border: 4px solid #fff;
+      box-shadow: 2px 4px 16px rgba(51, 51, 51, 0.5);
+      animation: pic-rotate 5s ease-out forwards;
+    }
+    @keyframes pic {
+      from { transform: translate(0, 0); }
+      40% { transform: translate(-100px, -200px) scale(1.5);  }
+      100% { transform: translate(0, -85vh) scale(1.2);  }
+    }
+    @keyframes pic-rotate {
+      from { transform: rotate(50deg); }
+      to { transform: rotate(-20deg); }
     }
   </style>
 </head>
@@ -306,9 +329,12 @@
       </label>
     </div>
   </div>
+  <div id="pics">
+
+  </div>
   <div class="bigboss">
     <p>Powered by
-      <span>大屁股</spana>
+      <span>八嘎朱</spana>
     </p>
     <p>Copyright &copy; 2016.09.01 ~ life. All Rights Reserved.</p>
   </div>
@@ -325,6 +351,16 @@
       })(cbs[i]);
     }
     console.log('love is love');
+
+    var urls = [
+      'http://storage.360buyimg.com/mtd/home/wechatimg9431511602207906.jpeg',
+      'http://storage.360buyimg.com/mtd/home/wechatimg9421511602208075.jpeg',
+      'http://storage.360buyimg.com/mtd/home/wechatimg9441511602208669.jpeg',
+    ]
+    var picElm = document.querySelector('#pics')
+    var img = document.createElement('img')
+    img.src = urls[Math.floor(Math.random() * urls.length)]
+    picElm.appendChild(img)
   </script>
 </body>
 
